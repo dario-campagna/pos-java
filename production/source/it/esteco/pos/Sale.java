@@ -15,14 +15,26 @@ public class Sale {
     public void onBarcode(String barcode) {
         // Smell: REFUSED BEQUEST
         if ("".equals(barcode)) {
-            display.setText("Scanning error: empty barcode!");
+            displayEmptyBarcodeErrorMessage();
             return;
         }
         if (pricesByBarcode.containsKey(barcode)) {
-            display.setText(pricesByBarcode.get(barcode));
+            findPriceAndDisplayAsText(barcode);
         } else {
-            display.setText("Product not found for " +
-                    barcode);
+            displayProductNotFoundMessage(barcode);
         }
+    }
+
+    private void findPriceAndDisplayAsText(String barcode) {
+        String priceAsText = pricesByBarcode.get(barcode);
+        display.setText(priceAsText);
+    }
+
+    private void displayProductNotFoundMessage(String barcode) {
+        display.setText("Product not found for " + barcode);
+    }
+
+    private void displayEmptyBarcodeErrorMessage() {
+        display.setText("Scanning error: empty barcode!");
     }
 }

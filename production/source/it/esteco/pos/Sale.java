@@ -20,9 +20,7 @@ public class Sale {
                 put("67890", "$12.10");
             }};
 
-            if ("12345".equals(barcode)) {
-                display.setText(pricesByBarcode.get(barcode));
-            } else if ("67890".equals(barcode)) {
+            if (pricesByBarcode.containsKey(barcode)) {
                 display.setText(pricesByBarcode.get(barcode));
             } else {
                 display.setText("Product not found for " +

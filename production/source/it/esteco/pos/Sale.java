@@ -21,9 +21,9 @@ public class Sale {
             }};
 
             if ("12345".equals(barcode)) {
-                display.setText(pricesByBarcode.get("12345"));
+                display.setText(pricesByBarcode.get(barcode));
             } else if ("67890".equals(barcode)) {
-                display.setText(pricesByBarcode.get("67890"));
+                display.setText(pricesByBarcode.get(barcode));
             } else {
                 display.setText("Product not found for " +
                         barcode);

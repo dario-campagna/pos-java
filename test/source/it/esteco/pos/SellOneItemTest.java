@@ -1,5 +1,6 @@
 package it.esteco.pos;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -8,14 +9,20 @@ import static org.junit.Assert.assertEquals;
 
 public class SellOneItemTest {
 
-    @Test
-    public void productFound() throws Exception {
-        Display display = new Display();
-        Sale sale = new Sale(display, new HashMap<String, String>() {{
+    private Display display;
+    private Sale sale;
+
+    @Before
+    public void setUp() throws Exception {
+        display = new Display();
+        sale = new Sale(display, new HashMap<String, String>() {{
             put("12345", "$7.95");
             put("67890", "$12.10");
         }});
+    }
 
+    @Test
+    public void productFound() throws Exception {
         sale.onBarcode("12345");
 
         assertEquals("$7.95", display.getText());
@@ -23,12 +30,6 @@ public class SellOneItemTest {
 
     @Test
     public void anotherProductFound() throws Exception {
-        Display display = new Display();
-        Sale sale = new Sale(display, new HashMap<String, String>() {{
-            put("12345", "$7.95");
-            put("67890", "$12.10");
-        }});
-
         sale.onBarcode("67890");
 
         assertEquals("$12.10", display.getText());
@@ -36,12 +37,6 @@ public class SellOneItemTest {
 
     @Test
     public void productNotFound() throws Exception {
-        Display display = new Display();
-        Sale sale = new Sale(display, new HashMap<String, String>() {{
-            put("12345", "$7.95");
-            put("67890", "$12.10");
-        }});
-
         sale.onBarcode("99999");
 
         assertEquals("Product not found for 99999", display.getText());
@@ -49,7 +44,6 @@ public class SellOneItemTest {
 
     @Test
     public void emptyBarcode() throws Exception {
-        Display display = new Display();
         Sale sale = new Sale(display, new HashMap<String, String>() {{
             put("12345", "$7.95");
             put("67890", "$12.10");

@@ -1,6 +1,5 @@
 package it.esteco.pos;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class Sale {
@@ -8,7 +7,7 @@ public class Sale {
     private Display display;
     private final Map<String, String> pricesByBarcode;
 
-    public Sale(Display display, HashMap<String, String> pricesByBarcode) {
+    public Sale(Display display, Map<String, String> pricesByBarcode) {
         this.display = display;
         this.pricesByBarcode = pricesByBarcode;
     }

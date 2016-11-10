@@ -1,5 +1,8 @@
 package it.esteco.pos;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Sale {
 
     private Display display;
@@ -12,10 +15,15 @@ public class Sale {
         if ("".equals(barcode)) {
             display.setText("Scanning error: empty barcode!");
         } else{
+            Map<String, String> pricesByBarcode = new HashMap<String, String>(){{
+                put("12345", "$7.95");
+                put("67890", "$12.10");
+            }};
+
             if ("12345".equals(barcode)) {
-                display.setText("$7.95");
+                display.setText(pricesByBarcode.get("12345"));
             } else if ("67890".equals(barcode)) {
-                display.setText("$12.10");
+                display.setText(pricesByBarcode.get("67890"));
             } else {
                 display.setText("Product not found for " +
                         barcode);

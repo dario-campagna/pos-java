@@ -1,7 +1,14 @@
 package it.esteco.pos;
 
 public class Sale {
-    public void onBarcode(String barcode) {
 
+    private Display display;
+
+    public Sale(Display display) {
+        this.display = display;
+    }
+
+    public void onBarcode(String barcode) {
+        display.setText("$7.95");
     }
 }

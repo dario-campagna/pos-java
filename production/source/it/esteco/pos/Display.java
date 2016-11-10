@@ -7,7 +7,15 @@ public class Display {
         return this.text;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void displayEmptyBarcodeErrorMessage() {
+        this.text = "Scanning error: empty barcode!";
+    }
+
+    public void displayProductNotFoundMessage(String barcode) {
+        this.text = "Product not found for " + barcode;
+    }
+
+    public void displayPrice(String priceAsText) {
+        this.text = priceAsText;
     }
 }

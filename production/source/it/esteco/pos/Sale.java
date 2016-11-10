@@ -1,15 +1,13 @@
 package it.esteco.pos;
 
-import java.util.Map;
-
 public class Sale {
 
     private Display display;
-    private final Map<String, String> pricesByBarcode;
+    private Catalog catalog;
 
-    public Sale(Display display, Map<String, String> pricesByBarcode) {
+    public Sale(Display display, Catalog catalog) {
         this.display = display;
-        this.pricesByBarcode = pricesByBarcode;
+        this.catalog = catalog;
     }
 
     public void onBarcode(String barcode) {
@@ -18,16 +16,12 @@ public class Sale {
             display.displayEmptyBarcodeErrorMessage();
             return;
         }
-        String priceAsText = findPrice(barcode);
+        String priceAsText = catalog.findPrice(barcode);
         if (priceAsText != null) {
             display.displayPrice(priceAsText);
         } else {
             display.displayProductNotFoundMessage(barcode);
         }
-    }
-
-    private String findPrice(String barcode) {
-        return pricesByBarcode.get(barcode);
     }
 
 }

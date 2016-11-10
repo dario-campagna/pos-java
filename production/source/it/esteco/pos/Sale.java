@@ -18,15 +18,19 @@ public class Sale {
             displayEmptyBarcodeErrorMessage();
             return;
         }
-        if (pricesByBarcode.containsKey(barcode)) {
-            findPriceAndDisplayAsText(barcode);
+        String priceAsText = findPrice(barcode);
+        if (priceAsText != null) {
+            displayPrice(priceAsText);
         } else {
             displayProductNotFoundMessage(barcode);
         }
     }
 
-    private void findPriceAndDisplayAsText(String barcode) {
-        String priceAsText = pricesByBarcode.get(barcode);
+    private String findPrice(String barcode) {
+        return pricesByBarcode.get(barcode);
+    }
+
+    private void displayPrice(String priceAsText) {
         display.setText(priceAsText);
     }
 

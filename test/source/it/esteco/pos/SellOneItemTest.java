@@ -1,7 +1,8 @@
 package it.esteco.pos;
 
-import org.junit.Ignore;
 import org.junit.Test;
+
+import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
 
@@ -10,7 +11,10 @@ public class SellOneItemTest {
     @Test
     public void productFound() throws Exception {
         Display display = new Display();
-        Sale sale = new Sale(display);
+        Sale sale = new Sale(display, new HashMap<String, String>() {{
+            put("12345", "$7.95");
+            put("67890", "$12.10");
+        }});
 
         sale.onBarcode("12345");
 
@@ -20,7 +24,10 @@ public class SellOneItemTest {
     @Test
     public void anotherProductFound() throws Exception {
         Display display = new Display();
-        Sale sale = new Sale(display);
+        Sale sale = new Sale(display, new HashMap<String, String>() {{
+            put("12345", "$7.95");
+            put("67890", "$12.10");
+        }});
 
         sale.onBarcode("67890");
 
@@ -30,7 +37,10 @@ public class SellOneItemTest {
     @Test
     public void productNotFound() throws Exception {
         Display display = new Display();
-        Sale sale = new Sale(display);
+        Sale sale = new Sale(display, new HashMap<String, String>() {{
+            put("12345", "$7.95");
+            put("67890", "$12.10");
+        }});
 
         sale.onBarcode("99999");
 
@@ -40,7 +50,10 @@ public class SellOneItemTest {
     @Test
     public void emptyBarcode() throws Exception {
         Display display = new Display();
-        Sale sale = new Sale(display);
+        Sale sale = new Sale(display, new HashMap<String, String>() {{
+            put("12345", "$7.95");
+            put("67890", "$12.10");
+        }});
 
         sale.onBarcode("");
 

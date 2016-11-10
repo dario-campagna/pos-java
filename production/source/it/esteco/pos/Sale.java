@@ -6,20 +6,17 @@ import java.util.Map;
 public class Sale {
 
     private Display display;
+    private final Map<String, String> pricesByBarcode;
 
-    public Sale(Display display) {
+    public Sale(Display display, HashMap<String, String> pricesByBarcode) {
         this.display = display;
+        this.pricesByBarcode = pricesByBarcode;
     }
 
     public void onBarcode(String barcode) {
         if ("".equals(barcode)) {
             display.setText("Scanning error: empty barcode!");
         } else{
-            Map<String, String> pricesByBarcode = new HashMap<String, String>(){{
-                put("12345", "$7.95");
-                put("67890", "$12.10");
-            }};
-
             if (pricesByBarcode.containsKey(barcode)) {
                 display.setText(pricesByBarcode.get(barcode));
             } else {

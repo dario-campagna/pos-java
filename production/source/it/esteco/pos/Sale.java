@@ -13,6 +13,7 @@ public class Sale {
     }
 
     public void onBarcode(String barcode) {
+        // Smell: REFUSED BEQUEST
         if ("".equals(barcode)) {
             display.setText("Scanning error: empty barcode!");
             return;

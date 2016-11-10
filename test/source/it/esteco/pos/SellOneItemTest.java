@@ -17,7 +17,7 @@ public class SellOneItemTest {
         assertEquals("$7.95", display.getText());
     }
 
-    @Test@Ignore
+    @Test
     public void anotherProductFound() throws Exception {
         Display display = new Display();
         Sale sale = new Sale(display);

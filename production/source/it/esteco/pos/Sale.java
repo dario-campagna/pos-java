@@ -11,8 +11,10 @@ public class Sale {
     public void onBarcode(String barcode) {
         if ("12345".equals(barcode)) {
             display.setText("$7.95");
-        } else {
+        } else if ("67890".equals(barcode)) {
             display.setText("$12.10");
+        } else {
+            display.setText("Product not found for 99999");
         }
     }
 }

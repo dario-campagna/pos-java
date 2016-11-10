@@ -36,4 +36,5 @@ public class SellOneItemTest {
 
         assertEquals("Product not found for 99999", display.getText());
     }
+
 }

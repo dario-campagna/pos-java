@@ -14,7 +14,8 @@ public class Sale {
         } else if ("67890".equals(barcode)) {
             display.setText("$12.10");
         } else {
-            display.setText("Product not found for 99999");
+            display.setText("Product not found for " +
+                    barcode);
         }
     }
 }
